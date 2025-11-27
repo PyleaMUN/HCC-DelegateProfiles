@@ -11,6 +11,7 @@
       --ink: #333;
       --brand: #005b63;
       --accent: #00b4a0;
+      --power: #d32f2f; /* Color for Portfolio Powers */
     }
     html, body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     .letterhead { display:flex; justify-content:space-between; align-items:center; background-color:#D6DBD2; border-bottom:2px solid #444; padding:10px 20px; min-height:100px; flex-wrap:wrap; }
@@ -31,6 +32,18 @@
     button.secondary { background:#1e88e5; }
     button.ghost { background:transparent; border:2px solid var(--accent); color:var(--accent); }
     button.viber { background: #7360F2; } /* Viber Purple */
+
+    /* Procedural Note Box */
+    .procedural-note {
+      background-color: #fff3e0;
+      border-left: 5px solid #ff9800;
+      padding: 1rem;
+      margin: 1rem 0 2rem;
+      border-radius: 4px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .procedural-note h4 { margin: 0 0 0.5rem; color: #e65100; }
+    .procedural-note p { margin: 0; font-size: 0.95rem; }
 
     /* Base Collapsible Styles */
     details { background:#fff; border:1px solid #cfe8ea; border-radius:12px; margin:.75rem 0; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
@@ -55,7 +68,7 @@
       font-weight: 600;
       font-size: 1.5rem;
     }
-    .container > p.bloc-intro { /* The intro <p> for each bloc */
+    .container > p.bloc-intro { 
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-style: italic;
       margin-bottom: 1rem;
@@ -91,27 +104,34 @@
         color: #111;
     }
     
+    /* Portfolio Power Special Text */
+    .power-text {
+      color: var(--brand);
+      background-color: #e0f2f1;
+      padding: 0.5rem;
+      border-radius: 4px;
+      border-left: 4px solid var(--brand);
+      margin-top: 1rem !important;
+    }
+    
     /* Bloc Colors */
     details.bloc-a { border-left-color: #c62828; } /* Red */
     details.bloc-a summary { color: #c62828; }
-    details.bloc-a .content p:nth-of-type(2) { color: #c62828; font-weight: 600; text-align: left; } /* Delegate Name Color */
+    details.bloc-a .content p:nth-of-type(2) { color: #c62828; font-weight: 600; text-align: left; } 
     
     details.bloc-b { border-left-color: #283593; } /* Indigo */
     details.bloc-b summary { color: #283593; }
-    details.bloc-b .content p:nth-of-type(2) { color: #283593; font-weight: 600; text-align: left; } /* Delegate Name Color */
+    details.bloc-b .content p:nth-of-type(2) { color: #283593; font-weight: 600; text-align: left; } 
 
     details.bloc-c { border-left-color: #2e7d32; } /* Green */
     details.bloc-c summary { color: #2e7d32; }
-    details.bloc-c .content p:nth-of-type(2) { color: #2e7d32; font-weight: 600; text-align: left; } /* Delegate Name Color */
+    details.bloc-c .content p:nth-of-type(2) { color: #2e7d32; font-weight: 600; text-align: left; } 
 
     details.bloc-d { border-left-color: #0277bd; } /* Blue */
     details.bloc-d summary { color: #0277bd; }
-    details.bloc-d .content p:nth-of-type(2) { color: #0277bd; font-weight: 600; text-align: left; } /* Delegate Name Color */
+    details.bloc-d .content p:nth-of-type(2) { color: #0277bd; font-weight: 600; text-align: left; } 
     
-    /* Re-align representative and delegate names to left */
-    .portfolio .content p:nth-of-type(1) {
-        text-align: left;
-    }
+    .portfolio .content p:nth-of-type(1) { text-align: left; }
 
     /* Chevron */
     details.portfolio summary::before {
@@ -149,7 +169,7 @@
 
     /* --- PRINT STYLES --- */
     @media print {
-      .controls, .letterhead, .footer-rule { 
+      .controls, .letterhead, .footer-rule, .procedural-note { 
         display:none !important; 
       }
       body, html { 
@@ -185,36 +205,34 @@
       details, details.portfolio { 
         border: none !important; 
         box-shadow: none !important; 
-        page-break-inside: avoid !important; /* Keep portfolios from splitting */
+        page-break-inside: avoid !important;
         margin-bottom: 1rem !important;
       }
       
-      /* Force details to be "open" by showing content */
       details .content {
         display: block !important; 
-        padding: 0 0 0 1rem !important; /* Indent content slightly */
+        padding: 0 0 0 1rem !important; 
       }
       details summary {
         padding: 0 !important; 
         font-size: 1.2rem !important;
         font-weight: 700 !important;
-        color: #000 !important; /* Black text for printing */
+        color: #000 !important; 
         margin-bottom: 0.5rem;
       }
-      /* Hide the interactive chevron */
       details.portfolio summary::before {
         display: none !important;
       }
-      /* Style summary and delegate colors to be plain black */
-      details.bloc-a summary,
-      details.bloc-a .content p:nth-of-type(2),
-      details.bloc-b summary,
-      details.bloc-b .content p:nth-of-type(2),
-      details.bloc-c summary,
-      details.bloc-c .content p:nth-of-type(2),
-      details.bloc-d summary,
-      details.bloc-d .content p:nth-of-type(2) {
+      details.bloc-a summary, details.bloc-a .content p:nth-of-type(2),
+      details.bloc-b summary, details.bloc-b .content p:nth-of-type(2),
+      details.bloc-c summary, details.bloc-c .content p:nth-of-type(2),
+      details.bloc-d summary, details.bloc-d .content p:nth-of-type(2),
+      .power-text {
           color: #000 !important;
+      }
+      .power-text {
+          background-color: transparent !important;
+          border: 1px solid #000 !important;
       }
       .portfolio .content p {
         color: #000 !important;
@@ -223,7 +241,7 @@
       }
       .portfolio .content p:nth-of-type(1),
       .portfolio .content p:nth-of-type(2) {
-          text-align: left !important; /* Keep delegate names left-aligned */
+          text-align: left !important;
       }
       
       .committee-footer {
@@ -265,6 +283,11 @@
         <a href="https://invite.viber.com/?g=BpVwQBk1lVWo3El7SLOsofmx0QQDvyCI" target="_blank" rel="noopener"><button class="viber">Join Viber Group</button></a>
         <button id="printPage" class="ghost">Print</button>
       </div>
+      
+      <div class="procedural-note">
+        <h4>⚡ Portfolio Powers & Private Notes</h4>
+        <p>This committee operates as a <strong>Hybrid Simulation</strong>. In addition to debating the Charter publicly, every delegate possesses a unique <strong>Portfolio Power</strong> listed below. This power represents your specific historical leverage (military assets, spies, wealth, or diplomatic influence). You may utilize this power by sending a secret <strong>Private Note</strong> to the Dais during the session to influence events behind the scenes.</p>
+      </div>
 
       <h3>🏛 A. The Great Powers & Macedonian Anchors</h3>
       <p class="bloc-intro">This bloc includes the most powerful states and Philip's core allies, who will heavily influence the direction of the Charter.</p>
@@ -275,7 +298,8 @@
           <p><strong>Representative:</strong> Phocion</p>
           <p><strong>Delegate:</strong> Charalampos Kolliniatis (Anaxagorio Senior High School of Nea Erythraia)</p>
           <p><strong>Primary Goal:</strong> To preserve Athens's naval power, commercial dominance, and, most importantly, its democratic <strong>Autonomy</strong>.</p>
-          <p><strong>Stance & Strategy:</strong> Phocion is the leader of the <strong>Pragmatists' Coalition</strong>. He is not a radical idealist; he accepts the military reality of Macedonian <strong>Hegemony</strong> after the Battle of Chaeronea. His strategy is not to defeat Philip, but to <strong>limit</strong> him. He will argue fiercely that the League must be a <strong>Federation</strong> of free states, not a centralized empire. His greatest bargaining chip is the powerful Athenian navy, which Philip critically needs for the Persian campaign. He will attempt to trade naval commitments in exchange for explicit <strong>Operative Clauses</strong> in the <strong>Charter</strong> that protect Athens's self-governance and ensure naval command remains with League-appointed admirals, not Macedonian generals.</p>
+          <p><strong>Stance & Strategy:</strong> Phocion is the leader of the <strong>Pragmatists' Coalition</strong>. His strategy is not to defeat Philip, but to <strong>limit</strong> him. He will argue fiercely that the League must be a <strong>Federation</strong> of free states, not a centralized empire. His greatest bargaining chip is the powerful Athenian navy, which Philip critically needs for the Persian campaign.</p>
+          <p class="power-text"><strong>Portfolio Power (The Attic Fleet):</strong> You control the largest remaining naval force in Greece. You can deploy specific squadrons to blockade ports or transport troops via a Private Note.</p>
         </div>
       </details>
       
@@ -285,7 +309,8 @@
           <p><strong>Representative:</strong> Astyphilus</p>
           <p><strong>Delegate:</strong> Sampanis Dimitrios (Anaxagorio Senior High School of Nea Erythraia)</p>
           <p><strong>Primary Goal:</strong> Simple survival. Thebes was crushed by Philip at Chaeronea, and its primary concern is rebuilding the city and ensuring its physical security.</p>
-          <p><strong>Stance & Strategy:</strong> Astyphilus is a core member of the <strong>Vulnerable Pro-Macedonian Bloc</strong>. He has no leverage and is entirely reliant on Philip's goodwill. He will be one of the easiest and most reliable votes for the Macedonian agenda. He will "walk a 'fine line' between capitulation and honor," likely framing his support for Philip as a pragmatic necessity for <strong>Panhellenic</strong> unity. He will be a strong voice <strong>for</strong> a powerful central authority, using the devastation of the <strong>Sacred War</strong> as a rhetorical tool to argue against the old, chaotic system of independent <strong>poleis</strong>.</p>
+          <p><strong>Stance & Strategy:</strong> Astyphilus is a core member of the <strong>Vulnerable Pro-Macedonian Bloc</strong>. He has no leverage and is entirely reliant on Philip's goodwill. He will be a strong voice <strong>for</strong> a powerful central authority, using the devastation of the <strong>Sacred War</strong> as a rhetorical tool.</p>
+          <p class="power-text"><strong>Portfolio Power (The Boeotian Network):</strong> Despite defeat, your network of spies and sympathizers in Central Greece remains. You can gather intelligence on troop movements or incite unrest in neighboring regions.</p>
         </div>
       </details>
       
@@ -294,8 +319,9 @@
         <div class="content">
           <p><strong>Representative:</strong> Deinarchus</p>
           <p><strong>Delegate:</strong> Georgios Laftsidis (1st Middle School of Pylea)</p>
-          <p><strong>Primary Goal:</strong> Economic prosperity. As the host city, Deinarchus wants to protect Corinth's status as a wealthy commercial hub and, crucially, protect the <strong>Diolkos</strong>—the vital land bridge that is the source of much of its wealth.</p>
-          <p><strong>Stance & Strategy:</strong> Deinarchus is a key member of the <strong>Pragmatists' Coalition</strong>. His support for Philip is entirely transactional. The <strong>Common Peace</strong> is good for business, and the Persian War is an opportunity to eliminate a major commercial rival. He will join Athens and Byzantium in fighting against any <strong>Charter</strong> clause that gives Philip arbitrary control over naval assets or trade routes, but he will be less concerned with matters of domestic <strong>Autonomy</strong> as long as Corinth's commerce is secure.</p>
+          <p><strong>Primary Goal:</strong> Economic prosperity. As the host city, Deinarchus wants to protect Corinth's status as a wealthy commercial hub and, crucially, protect the <strong>Diolkos</strong>.</p>
+          <p><strong>Stance & Strategy:</strong> Deinarchus is a key member of the <strong>Pragmatists' Coalition</strong>. The <strong>Common Peace</strong> is good for business. He will join Athens in fighting against any clause that gives Philip arbitrary control over naval assets.</p>
+          <p class="power-text"><strong>Portfolio Power (The Diolkos Control):</strong> You manage the strategic land-bridge. You can secretly delay, tax, or expedite the movement of any army or trade shipment crossing between the Peloponnese and the mainland.</p>
         </div>
       </details>
 
@@ -305,7 +331,8 @@
           <p><strong>Representative:</strong> Perilaus</p>
           <p><strong>Delegate:</strong> Stamatogiannis Georgios (1st Senior High School of Panorama)</p>
           <p><strong>Primary Goal:</strong> To use the new League's power to achieve its ultimate geopolitical goal: the final and permanent containment of its hated rival, Sparta.</p>
-          <p><strong>Stance & Strategy:</strong> Perilaus is a staunch Macedonian loyalist and a leader of the <strong>Peloponnesian loyalist Bloc</strong>. His entire agenda is defined by his anti-Spartan stance. He will aggressively push for the <strong>Charter</strong> to include strong <strong>Operative Clauses</strong> on internal security and dispute resolution. His goal is to create a "judicial mechanism" that allows the League to legally isolate, sanction, and militarily coerce Sparta, thereby securing Argos's dominance in the <strong>Peloponnese</strong> under the umbrella of Macedonian power. He will be the first to support any <strong>Royal Decree</strong> from Philip demanding action against Sparta.</p>
+          <p><strong>Stance & Strategy:</strong> Perilaus is a staunch Macedonian loyalist. He will aggressively push for the <strong>Charter</strong> to include strong <strong>Operative Clauses</strong> on internal security. His goal is to legally isolate and sanction Sparta.</p>
+          <p class="power-text"><strong>Portfolio Power (The Argive Garrison):</strong> You command a significant hoplite force poised on the Spartan border. You can order border skirmishes or fortify passes to provoke or contain Sparta.</p>
         </div>
       </details>
       
@@ -315,7 +342,8 @@
           <p><strong>Representative:</strong> Daochos of Pharsalus</p>
           <p><strong>Delegate:</strong> Anthoulakis Nikolaos (2nd Senior High School of Thermi "Giorgos loannou")</p>
           <p><strong>Primary Goal:</strong> To advocate for full, deep integration and unity under Philip's <strong>Hegemony</strong>.</p>
-          <p><strong>Stance & Strategy:</strong> Daochos is Philip's strongest ideological voice. The Thessalian League is already "deeply integrated" with Macedon. He will act as Philip's mouthpiece, countering arguments from Athens and Aetolia. He will argue that <strong>Hegemony</strong> is not oppression but a necessary, enlightened step toward <strong>Panhellenic</strong> vengeance against Persia. He will push for a highly centralized <strong>Federated State</strong> model where Philip has clear and unhindered authority.</p>
+          <p><strong>Stance & Strategy:</strong> Daochos is Philip's strongest ideological voice. He will argue that <strong>Hegemony</strong> is a necessary step toward <strong>Panhellenic</strong> vengeance. He will push for a highly centralized <strong>Federated State</strong> model.</p>
+          <p class="power-text"><strong>Portfolio Power (The Cavalry of the Plains):</strong> You command the finest cavalry in Greece. You can deploy rapid riders for messaging, scouting, or swift military strikes on behalf of the King.</p>
         </div>
       </details>
 
@@ -328,7 +356,8 @@
           <p><strong>Representative:</strong> Aratus of Sicyon</p>
           <p><strong>Delegate:</strong> Michos Konstantinos (Anaxagorio Senior High School of Nea Erythraia)</p>
           <p><strong>Primary Goal:</strong> To protect the rights of the League's smaller member states from being crushed by the ambitions of "great powers" like Argos and Macedon.</p>
-          <p><strong>Stance & Strategy:</strong> Aratus will be a voice for constitutional checks and balances. He fears that Argos (Perilaus) will hijack the League's internal security mechanisms to settle old grudges. He will focus on the "Internal Dispute Resolution" article of the <strong>Charter</strong>, arguing for a council with fair representation to prevent abuses of power.</p>
+          <p><strong>Stance & Strategy:</strong> Aratus will be a voice for constitutional checks and balances. He will focus on the "Internal Dispute Resolution" article, arguing for a council with fair representation.</p>
+          <p class="power-text"><strong>Portfolio Power (The Federal Council):</strong> You have a unique diplomatic network among the smaller states. You can use this to secretly coordinate voting blocs or gather consensus before a session.</p>
         </div>
       </details>
 
@@ -338,7 +367,8 @@
           <p><strong>Representative:</strong> Cercidas of Megalopolis</p>
           <p><strong>Delegate:</strong> Vasilis Papaspiridakos (1st Senior High School of Pylea)</p>
           <p><strong>Primary Goal:</strong> The containment of Sparta. The Arcadian League's main city, Megalopolis, was specifically founded to be a check on Spartan power.</p>
-          <p><strong>Stance & Strategy:</strong> Cercidas is Perilaus's (Argos) most natural and firm ally, forming the core of the <strong>Peloponnesian loyalist Bloc</strong>. His agenda is singular: use the League to end the Spartan threat. He will second any anti-Spartan motion or resolution, framing it as a non-negotiable step for the security of the entire <strong>Peloponnese</strong>.</p>
+          <p><strong>Stance & Strategy:</strong> Cercidas is Perilaus's ally. His agenda is singular: use the League to end the Spartan threat. He will second any anti-Spartan motion.</p>
+          <p class="power-text"><strong>Portfolio Power (The Megalopolis Fortifications):</strong> Your city is the bulwark against Sparta. You can strengthen defenses or launch raids into Laconia to test Spartan resolve.</p>
         </div>
       </details>
 
@@ -348,7 +378,8 @@
           <p><strong>Representative:</strong> Phaeax</p>
           <p><strong>Delegate:</strong> Ilias Pipilakidis (Onassio State Senior High School of Thessaloniki - Periklis Stefanidis)</p>
           <p><strong>Primary Goal:</strong> To end the constant wars and, most importantly, protect the neutrality and sanctity of the Olympic Games.</p>
-          <p><strong>Stance & Strategy:</strong> Phaeax is a strong proponent of the <strong>Common Peace</strong>. His leverage is cultural and religious. He will argue that the endemic warfare plaguing Greece is a sacrilege that threatens sacred institutions like the Olympics. He will support Philip's peace clauses but may be wary of the Argive bloc's call for an immediate military campaign against Sparta, as this simply brings more war to his doorstep.</p>
+          <p><strong>Stance & Strategy:</strong> Phaeax is a strong proponent of the <strong>Common Peace</strong>. He will argue that warfare is a sacrilege that threatens the Olympics. He may be wary of calls for immediate military campaigns.</p>
+          <p class="power-text"><strong>Portfolio Power (The Olympic Truce):</strong> As guardians of Olympia, you can declare a "Sacred Truce" (Ekecheiria) via note, which imposes a temporary movement penalty on all Greek armies for religious observance.</p>
         </div>
       </details>
       
@@ -358,7 +389,8 @@
           <p><strong>Representative:</strong> Asclepiades</p>
           <p><strong>Delegate:</strong> Vasiliadi Andriana (2nd Senior High School of Pylea)</p>
           <p><strong>Primary Goal:</strong> To guarantee the inviolability of sacred sites and ensure safe passage for all pilgrims traveling to the famed Sanctuary of Asclepius.</p>
-          <p><strong>Stance & Strategy:</strong> Similar to Elis, Asclepiades's stance is driven by religious and economic (pilgrimage) needs. Peace and stability are paramount. He will support any <strong>Charter</strong> article that enforces the <strong>Common Peace</strong> and provides internal security, as this is essential for pilgrims and the prestige of his <strong>Polis</strong>.</p>
+          <p><strong>Stance & Strategy:</strong> Asclepiades's stance is driven by religious and economic needs. Peace and stability are paramount. He will support any <strong>Charter</strong> article that enforces the <strong>Common Peace</strong>.</p>
+          <p class="power-text"><strong>Portfolio Power (Sanctuary Asylum):</strong> The Temple of Asclepius is inviolable. You can grant sanctuary to any individual (spy, defector, or refugee), protecting them from arrest or assassination.</p>
         </div>
       </details>
 
@@ -371,7 +403,8 @@
           <p><strong>Representative:</strong> Chares</p>
           <p><strong>Delegate:</strong> Giannopoulos Vasileios Rafail (1st Senior High School of Panorama)</p>
           <p><strong>Primary Goal:</strong> To maintain "fierce independence and maximum local <strong>Autonomy</strong>."</p>
-          <p><strong>Stance & Strategy:</strong> Chares is the primary opposition leader in the Congress. "Highly skeptical of Philip," he represents a rugged, militaristic people who are difficult to coerce. He will be the loudest voice arguing for <strong>Polis Sovereignty</strong> and will clash directly with Daochos (Thessaly) and Philip's generals. He will work with Phocion (Athens) to try and limit Macedonian authority at every turn, scrutinizing every word of the <strong>Charter</strong> for hidden clauses that expand Philip's power.</p>
+          <p><strong>Stance & Strategy:</strong> Chares is the primary opposition leader. He represents a rugged, militaristic people. He will be the loudest voice arguing for <strong>Polis Sovereignty</strong>.</p>
+          <p class="power-text"><strong>Portfolio Power (Mountain Guerillas):</strong> Your forces are masters of irregular warfare. You can order ambushes on supply lines or messengers passing through the rugged terrain of Central Greece.</p>
         </div>
       </details>
 
@@ -381,7 +414,8 @@
           <p><strong>Representative:</strong> Anaximenes</p>
           <p><strong>Delegate:</strong> To Be Announced 1 (1st Middle School of Kifissia)</p>
           <p><strong>Primary Goal:</strong> To gain a firm security guarantee against its powerful and aggressive neighbor, the Aetolian League.</p>
-          <p><strong>Stance & Strategy:</strong> Anaximenes's position is defined by his fear of Chares (Aetolia). He is a key member of the Example <strong>Vulnerable Pro-Macedonian Bloc</strong>. He sees Philip's <strong>Hegemony</strong> as a necessary protection. He will willingly vote for strong <strong>Operative Clauses</strong> that allow Macedonian troops to enforce the <strong>Common Peace</strong>, as he views this as a direct guarantee of his own border security.</p>
+          <p><strong>Stance & Strategy:</strong> Anaximenes is a key member of the <strong>Vulnerable Pro-Macedonian Bloc</strong>. He sees Philip's <strong>Hegemony</strong> as a necessary protection.</p>
+          <p class="power-text"><strong>Portfolio Power (Western Harbors):</strong> You control the logistics for fleets moving to Italy. You can seize, delay, or supply ships docking in your ports.</p>
         </div>
       </details>
 
@@ -391,7 +425,8 @@
           <p><strong>Representative:</strong> Onomarchus the Younger</p>
           <p><strong>Delegate:</strong> George Firfiris (Junior High School of Philothei)</p>
           <p><strong>Primary Goal:</strong> Protection, stability, and financial assistance to rebuild after the devastation of the <strong>Sacred War</strong>.</p>
-          <p><strong>Stance & Strategy:</strong> Phocis is in a position of complete weakness and is "reliant on the <strong>Hegemon</strong> for survival." Onomarchus will be a powerful rhetorical pawn for the Macedonian bloc, serving as a living example of the chaos that Philip's <strong>Common Peace</strong> aims to end. He will trade his state's <strong>Sovereignty</strong> for immediate security and rebuilding aid, voting with the <strong>Vulnerable Pro-Macedonian Bloc</strong> on every key issue.</p>
+          <p><strong>Stance & Strategy:</strong> Phocis is in a position of complete weakness. Onomarchus will trade his state's <strong>Sovereignty</strong> for immediate security and rebuilding aid.</p>
+          <p class="power-text"><strong>Portfolio Power (The Reconstruction Fund):</strong> You have received specific funds from Philip for rebuilding. You can divert these funds to bribe other delegates or hire mercenaries for defense.</p>
         </div>
       </details>
       
@@ -401,7 +436,8 @@
           <p><strong>Representative:</strong> Stilpo (The Philosopher)</p>
           <p><strong>Delegate:</strong> Galanopoulou Diamantenia (2nd Middle School of Melissia)</p>
           <p><strong>Primary Goal:</strong> To use "pragmatic logic" to preserve Megara's rights and navigate its delicate position between the major powers of Athens and Corinth.</p>
-          <p><strong>Stance & Strategy:</strong> Stilpo will be a cautious, intellectual, and influential voice in the debate. He will not be swayed by passion (like Chares) or fear (like Anaximenes). He will likely be a key "swing vote," focusing on the precise wording of the <strong>Charter</strong> and proposing amendments during <strong>Moderated Caucuses</strong>. His arguments will focus on logic and constitutional fairness.</p>
+          <p><strong>Stance & Strategy:</strong> Stilpo will be a cautious, intellectual voice. He will likely be a key "swing vote," focusing on the precise wording of the <strong>Charter</strong>.</p>
+          <p class="power-text"><strong>Portfolio Power (The Isthmus Gate):</strong> You control the secondary passes near Corinth. You can secretly allow or deny passage to spies and messengers moving between Athens and the Peloponnese.</p>
         </div>
       </details>
       
@@ -411,7 +447,8 @@
           <p><strong>Representative:</strong> Euthymus of Opus</p>
           <p><strong>Delegate:</strong> Kourkoutas Charalampos (2nd Middle School of Melissia)</p>
           <p><strong>Primary Goal:</strong> Regional stability, protection from the Aetolians and Phocians, and compensation for losses suffered during the <strong>Sacred War</strong>.</p>
-          <p><strong>Stance & Strategy:</strong> "Geographically vulnerable" and "desperate for security," Euthymus is a "cautious supporter of Macedonian peace." He won't be a vocal loyalist like Daochos, but he is not in a position to defy Philip. He will reliably vote for any Macedonian-backed security measure that promises to protect his borders.</p>
+          <p><strong>Stance & Strategy:</strong> Euthymus is "geographically vulnerable." He will reliably vote for any Macedonian-backed security measure that promises to protect his borders.</p>
+          <p class="power-text"><strong>Portfolio Power (Guardians of Thermopylae):</strong> You control the "Hot Gates." You can report exactly who enters or leaves Central Greece via Private Note, or block the pass to small groups.</p>
         </div>
       </details>
 
@@ -424,7 +461,8 @@
           <p><strong>Representative:</strong> Callias of Chalcis</p>
           <p><strong>Delegate:</strong> Elena Ntourou (American Farm School of Thessaloniki)</p>
           <p><strong>Primary Goal:</strong> To create a unified league capable of protecting the islands from piracy and the Persian naval threat.</p>
-          <p><strong>Stance & Strategy:</strong> Callias is a hardened pragmatist. Having "suffered consequences of defying Macedon" in the past, he has no interest in ideological fights he can't win. His goals are security-focused. He will support the Persian War and a strong, unified league structure because it directly serves his interest in maritime safety.</p>
+          <p><strong>Stance & Strategy:</strong> Callias is a hardened pragmatist. His goals are security-focused. He will support the Persian War and a strong, unified league structure.</p>
+          <p class="power-text"><strong>Portfolio Power (The Copper Mines):</strong> Your island is rich in resources. You can generate immediate wealth to finance small military endeavors or pay off debts for other states.</p>
         </div>
       </details>
       
@@ -433,8 +471,9 @@
         <div class="content">
           <p><strong>Representative:</strong> Prytanis</p>
           <p><strong>Delegate:</strong> Kristina Thomo (2nd Senior High School of Thermi "Giorgos loannou")</p>
-          <p><strong>Primary Goal:</strong> To advance maritime law, protect its trade routes (especially to Italy), and prevent any single power (like Athens) from gaining a naval monopoly.</p>
-          <p><strong>Stance & Strategy:</strong> Prytanis is laser-focused on naval and trade clauses. He will join the <strong>Pragmatists' Coalition</strong> (Athens, Byzantium, Rhodes) to argue against giving Philip direct command of their fleets. He will likely advocate for a separate naval council composed of admirals from the maritime states.</p>
+          <p><strong>Primary Goal:</strong> To advance maritime law, protect its trade routes, and prevent any single power from gaining a naval monopoly.</p>
+          <p><strong>Stance & Strategy:</strong> Prytanis is focused on naval clauses. He will join the <strong>Pragmatists' Coalition</strong> to argue against giving Philip direct command of their fleets.</p>
+          <p class="power-text"><strong>Portfolio Power (The Adriatic Fleet):</strong> Your navy dominates the western seas. You can intercept communications or trade coming from Italy and Sicily.</p>
         </div>
       </details>
 
@@ -444,7 +483,8 @@
           <p><strong>Representative:</strong> Mentor (Archetype)</p>
           <p><strong>Delegate:</strong> Maria Pana (Onassio State Senior High School of Thessaloniki - Periklis Stefanidis)</p>
           <p><strong>Primary Goal:</strong> To protect its independence, its powerful navy, and its extensive commercial networks.</p>
-          <p><strong>Stance & Strategy:</strong> As a "sought-after naval partner," Mentor is "wary of naval subordination." He will be a key member of the maritime <strong>Bloc</strong> and will firmly support the proposal that naval contributions "remain under the command of League-appointed admirals" and not Macedonian generals like Parmenion. His vote and his fleet will be heavily courted by all sides.</p>
+          <p><strong>Stance & Strategy:</strong> Mentor is "wary of naval subordination." He will firmly support the proposal that naval contributions "remain under the command of League-appointed admirals."</p>
+          <p class="power-text"><strong>Portfolio Power (The Anti-Piracy Taskforce):</strong> Your ships are the fastest in the Aegean. You can deploy them to hunt down smugglers or escort sensitive shipments safely.</p>
         </div>
       </details>
 
@@ -453,8 +493,9 @@
         <div class="content">
           <p><strong>Representative:</strong> Nearchus</p>
           <p><strong>Delegate:</strong> Markella Kechagia (Anaxagorio Senior High School of Nea Erythraia)</p>
-          <p><strong>Primary Goal:</strong> Economic benefits. Crete's primary business is providing "skilled mercenary soldiers" and facilitating trade.</p>
-          <p><strong>Stance & Strategy:</strong> Nearchus is purely "opportunistic." He will support whatever system guarantees stability and profit. The <strong>Common Peace</strong> is good because it creates a stable environment for trade. The Persian War is <strong>great</strong> because it creates massive demand for mercenaries. His vote will go to whoever best supports this stability and creates the most lucrative opportunities for his services.</p>
+          <p><strong>Primary Goal:</strong> Economic benefits. Crete's primary business is providing "skilled mercenary soldiers."</p>
+          <p><strong>Stance & Strategy:</strong> Nearchus is "opportunistic." The <strong>Common Peace</strong> is good for trade; the Persian War is <strong>great</strong> for mercenary demand.</p>
+          <p class="power-text"><strong>Portfolio Power (The Mercenary Exchange):</strong> You are the hub for hired guns. You can recruit specific specialist units (Cretan Archers) for yourself or other delegates at a discount.</p>
         </div>
       </details>
       
@@ -464,7 +505,8 @@
           <p><strong>Representative:</strong> Diopithes</p>
           <p><strong>Delegate:</strong> Eleftherios Christos Mourmouras (Model Vocational High School of Epanomi)</p>
           <p><strong>Primary Goal:</strong> To secure the grain supply and maintain as much <strong>Autonomy</strong> from Macedon as possible in the strategic straits region.</p>
-          <p><strong>Stance & Strategy:</strong> Though "historically anti-Macedonian," Diopithes has been forced to become a "cautious Philip supporter." He shares a strategic interest with Byzantium but has less power. His primary goal in the <strong>Charter</strong> debate will be to secure "free passage clauses" to ensure Philip cannot arbitrarily interfere with his access to the Black Sea. He will likely follow Leo's (Byzantium's) lead in negotiations.</p>
+          <p><strong>Stance & Strategy:</strong> Diopithes has been forced to become a "cautious Philip supporter." His primary goal will be to secure "free passage clauses."</p>
+          <p class="power-text"><strong>Portfolio Power (The Grain Depots):</strong> You control the storage facilities for Black Sea grain. You can falsify inventory reports or secretly hoard supplies to create artificial scarcity.</p>
         </div>
       </details>
 
@@ -474,7 +516,8 @@
           <p><strong>Representative:</strong> Leo</p>
           <p><strong>Delegate:</strong> To Be Announced 2 (1st Middle School of Kifissia)</p>
           <p><strong>Primary Goal:</strong> To ensure the security of the <strong>Hellespont</strong> and the uninterrupted flow of the vital grain supply from the Black Sea.</p>
-          <p><strong>Stance & Strategy:</strong> Leo holds one of the strongest negotiating positions in the room. He knows that his city's compliance is "non-negotiable for Philip," as it controls the "vital economic chokepoint" for both Athens's food and Philip's invasion. He will be a cool, calculating leader of the <strong>Pragmatists' Coalition</strong>. He will trade his essential "compliance" for iron-clad <strong>Operative Clauses</strong> protecting his city's <strong>Autonomy</strong> and trade rights.</p>
+          <p><strong>Stance & Strategy:</strong> Leo holds one of the strongest negotiating positions. He will be a cool, calculating leader of the <strong>Pragmatists' Coalition</strong>. He will trade his "compliance" for iron-clad <strong>Operative Clauses</strong>.</p>
+          <p class="power-text"><strong>Portfolio Power (The Hellespont Chain):</strong> You hold the key to the Black Sea. You can close the strait to specific flags or levy heavy tolls on rival states (like Athens) to apply economic pressure.</p>
         </div>
       </details>
       
